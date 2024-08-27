@@ -38,4 +38,7 @@ func InitDB() {
 
 	// Auto migrate the models
 	DB.AutoMigrate(&models.User{})
+	DB.AutoMigrate(&models.Blog{})
+	DB.AutoMigrate(&models.Category{})
+	DB.AutoMigrate(&models.Comment{})
 }
