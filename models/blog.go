@@ -18,9 +18,9 @@ type Blog struct {
 
 type Category struct {
 	gorm.Model
-	Name string `json:"name" gorm:"not null"`
-	Blogs []Blog `json:"blogs" gorm:"foreignKey:CategoryID"`
-	Status string `json:"status" gorm:"type:enum('active', 'inactive');default:'active'"`
+	Name   string `json:"name" gorm:"not null" validate:"required,min=3,max=100"`
+	Blogs  []Blog `json:"blogs" gorm:"foreignKey:CategoryID"`
+	Status string `json:"status" gorm:"type:enum('active', 'inactive');default:'active'" validate:"required,oneof=active inactive"`
 }
 
 type Comment struct {

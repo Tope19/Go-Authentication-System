@@ -31,7 +31,7 @@ func Register(c *gin.Context) {
 	// Save User to Database
 	if err := config.DB.Create(&user).Error; err != nil {
 		utils.Logger.Printf("Error: %v", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to Register User"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
